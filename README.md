@@ -173,5 +173,5 @@ root@server ~# telegraf -test -config /etc/telegraf/telegraf.conf --input-filter
 ```
 #
 ## Grafana
-![](grafana-php.png)
+![](grafana-php.PNG)
 
