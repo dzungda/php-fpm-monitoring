@@ -171,3 +171,7 @@ root@server ~# telegraf -test -config /etc/telegraf/telegraf.conf --input-filter
 > cpu,cpu=cpu0,host=server usage_user=1.9999999999527063,usage_system=0,usage_idle=97.99999999813735,usage_iowait=0,usage_steal=0,usage_guest=0,usage_nice=0,usage_irq=0,usage_softirq=0,usage_guest_nice=0 1522576796000000000
 > cpu,cpu=cpu-total,host=nagisa usage_steal=0,usage_user=1.9999999999527063,usage_nice=0,usage_irq=0,usage_softirq=0,usage_guest=0,usage_guest_nice=0,usage_system=0,usage_idle=97.99999999813735,usage_iowait=0 1522576796000000000
 ```
+#
+## Grafana
+![](grafana-php.png)
+
