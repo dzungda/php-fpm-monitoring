@@ -4,10 +4,10 @@
 
 ## php-fpm installation
 
-(https://www.cloudbooklet.com/how-to-install-php-fpm-with-apache-on-ubuntu-18-04-google-cloud/)
-
+https://www.cloudbooklet.com/how-to-install-php-fpm-with-apache-on-ubuntu-18-04-google-cloud/
+#
 ## influxdb installation 
-(https://docs.influxdata.com/influxdb/v1.5/introduction/installation/)
+https://docs.influxdata.com/influxdb/v1.5/introduction/installation/
 
 Debian 9
 ```hcl
@@ -17,7 +17,7 @@ apt-get update
 apt-get install influxdb
 systemctl start influxdb
 ```
-###Configure InfluxDB
+### Configure InfluxDB
 ```hcl
 root@server ~# influx
 Connected to http://localhost:8086 version 1.5.1
@@ -51,6 +51,7 @@ name		duration	replicaN	DEFAULT
 DEFAULT		0		1		FALSE
 thirty_days	720h0m0s	1		TRUE
 ```
+#
 ## telegraf installation 
 (https://docs.influxdata.com/telegraf/v1.14/introduction/installation/)
 
