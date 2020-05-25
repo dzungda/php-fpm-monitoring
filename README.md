@@ -1,9 +1,10 @@
 # php-fpm-monitoring
-
+#
 ![](php-fpm.png)
 
 ## php-fpm installation
 
+(https://www.cloudbooklet.com/how-to-install-php-fpm-with-apache-on-ubuntu-18-04-google-cloud/)
 
 ## influxdb installation 
 (https://docs.influxdata.com/influxdb/v1.5/introduction/installation/)
@@ -96,4 +97,17 @@ Inputs configuration
   username = "telegraf"
   password = "scloud!"
 
+```
+### You can see what Telegraf collects with this command
+```hcl
+telegraf -test -config /etc/telegraf/telegraf.conf
+```
+
+This is very useful when adding new plugins
+```hcl
+root@server ~# telegraf -test -config /etc/telegraf/telegraf.conf --input-filter cpu
+* Plugin: inputs.cpu, Collection 1
+* Plugin: inputs.cpu, Collection 2
+> cpu,cpu=cpu0,host=server usage_user=1.9999999999527063,usage_system=0,usage_idle=97.99999999813735,usage_iowait=0,usage_steal=0,usage_guest=0,usage_nice=0,usage_irq=0,usage_softirq=0,usage_guest_nice=0 1522576796000000000
+> cpu,cpu=cpu-total,host=nagisa usage_steal=0,usage_user=1.9999999999527063,usage_nice=0,usage_irq=0,usage_softirq=0,usage_guest=0,usage_guest_nice=0,usage_system=0,usage_idle=97.99999999813735,usage_iowait=0 1522576796000000000
 ```
