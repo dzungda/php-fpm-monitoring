@@ -165,11 +165,9 @@ telegraf -test -config /etc/telegraf/telegraf.conf
 
 This is very useful when adding new plugins
 ```hcl
-root@server ~# telegraf -test -config /etc/telegraf/telegraf.conf --input-filter cpu
-* Plugin: inputs.cpu, Collection 1
-* Plugin: inputs.cpu, Collection 2
-> cpu,cpu=cpu0,host=server usage_user=1.9999999999527063,usage_system=0,usage_idle=97.99999999813735,usage_iowait=0,usage_steal=0,usage_guest=0,usage_nice=0,usage_irq=0,usage_softirq=0,usage_guest_nice=0 1522576796000000000
-> cpu,cpu=cpu-total,host=nagisa usage_steal=0,usage_user=1.9999999999527063,usage_nice=0,usage_irq=0,usage_softirq=0,usage_guest=0,usage_guest_nice=0,usage_system=0,usage_idle=97.99999999813735,usage_iowait=0 1522576796000000000
+ubuntu@ip-10-1-2-236:/etc/apache2$ telegraf -test -config /etc/telegraf/telegraf.conf --input-filter phpfpm
+2020-05-25T12:14:44Z I! Starting Telegraf 1.14.3
+> phpfpm,host=myserver,pool=www,url=fcgi://127.0.0.1:9000/status accepted_conn=92413i,active_processes=1i,idle_processes=2i,listen_queue=0i,listen_queue_len=128i,max_active_processes=4i,max_children_reached=0i,max_listen_queue=2i,slow_requests=0i,start_since=270772i,total_processes=3i 1590408884000000000
 ```
 #
 ## Grafana
