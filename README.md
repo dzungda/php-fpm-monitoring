@@ -14,7 +14,7 @@ Edit `/etc/php/7.2/fpm/pool.d/www.conf`
 user = www-data
 group = www-data
 
-listen = 127.0.0.1:9000
+listen = IP_ADRESS:9000
 listen.owner = www-data
 listen.group = www-data
 
@@ -23,6 +23,48 @@ pm = dynamic
 pm.status_path = /status
 
 ```
+
+Edit `/etc/apache2/mods-available/fastcgi.conf`
+
+```hcl
+<IfModule mod_fastcgi.c>
+        # Define a named handler
+        AddHandler php7-fcgi .php
+        # Generate an alias pointing to /usr/lib/cgi-bin/php[VersionNumber]-fcgi
+        Alias /php7-fcgi /usr/lib/cgi-bin/php7-fcgi
+        # Configure an external server handling your upcoming requests (note where the alias is pointing towards)
+        FastCgiExternalServer /usr/lib/cgi-bin/php7-fcgi -socket /var/run/php/php7.0-fpm.sock -pass-header Authorization
+
+         # only on if fpm-status is match. You might want to put this into your concrete vhost.conf file. For the testing, fastcgi.conf should work.
+         <LocationMatch "/status">
+             # set the before defined handler here
+             SetHandler php7-fcgi
+             # use the handler for the action handling virtual requests
+             Action php7-fcgi /php7-fcgi virtual
+         </LocationMatch>
+</IfModule>
+
+```
+Edit `/etc/apache2/sites-enabled/000-default.conf`
+
+```hcl
+<VirtualHost *:80>
+        
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+
+        <FilesMatch "\.php$">
+        SetHandler "proxy:fcgi://127.0.0.1:9000/"
+        </FilesMatch>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+       
+</VirtualHost>
+
+```
+
+
 ## influxdb installation 
 https://docs.influxdata.com/influxdb/v1.5/introduction/installation/
 
