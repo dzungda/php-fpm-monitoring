@@ -6,6 +6,23 @@
 
 https://www.cloudbooklet.com/how-to-install-php-fpm-with-apache-on-ubuntu-18-04-google-cloud/
 #
+Edit `/etc/php/7.2/fpm/pool.d/www.conf`
+```hcl
+...
+[www]
+
+user = www-data
+group = www-data
+
+listen = 127.0.0.1:9000
+listen.owner = www-data
+listen.group = www-data
+
+pm = dynamic
+
+pm.status_path = /status
+
+```
 ## influxdb installation 
 https://docs.influxdata.com/influxdb/v1.5/introduction/installation/
 
@@ -53,7 +70,7 @@ thirty_days	720h0m0s	1		TRUE
 ```
 #
 ## telegraf installation 
-(https://docs.influxdata.com/telegraf/v1.14/introduction/installation/)
+https://docs.influxdata.com/telegraf/v1.14/introduction/installation/
 
 ### Configure Telegraf
 
