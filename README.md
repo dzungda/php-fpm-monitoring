@@ -65,7 +65,7 @@ Edit `/etc/apache2/sites-enabled/000-default.conf`
 ```
 
 
-## influxdb installation 
+## Influxdb installation 
 https://docs.influxdata.com/influxdb/v1.5/introduction/installation/
 
 Debian 9
@@ -111,7 +111,7 @@ DEFAULT		0		1		FALSE
 thirty_days	720h0m0s	1		TRUE
 ```
 #
-## telegraf installation 
+## Telegraf installation 
 https://docs.influxdata.com/telegraf/v1.14/introduction/installation/
 
 ### Configure Telegraf
